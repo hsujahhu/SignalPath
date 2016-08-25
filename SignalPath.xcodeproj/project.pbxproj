@@ -15,6 +15,12 @@
 		FED635061D6F5CB400276E21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FED635041D6F5CB400276E21 /* LaunchScreen.storyboard */; };
 		FED635111D6F5CB400276E21 /* SignalPathTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FED635101D6F5CB400276E21 /* SignalPathTests.m */; };
 		FED6351C1D6F5CB400276E21 /* SignalPathUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FED6351B1D6F5CB400276E21 /* SignalPathUITests.m */; };
+		FED6354C1D6F5FA800276E21 /* LSCollectionViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FED635401D6F5FA800276E21 /* LSCollectionViewHelper.m */; };
+		FED6354D1D6F5FA800276E21 /* LSCollectionViewLayoutHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FED635421D6F5FA800276E21 /* LSCollectionViewLayoutHelper.m */; };
+		FED6354E1D6F5FA800276E21 /* DraggableCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FED635451D6F5FA800276E21 /* DraggableCollectionViewFlowLayout.m */; };
+		FED6354F1D6F5FA800276E21 /* UICollectionView+Draggable.m in Sources */ = {isa = PBXBuildFile; fileRef = FED635471D6F5FA800276E21 /* UICollectionView+Draggable.m */; };
+		FED635521D6F5FD100276E21 /* JHSignalPathViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FED635511D6F5FD100276E21 /* JHSignalPathViewController.m */; };
+		FED635561D6F679000276E21 /* JHBlockCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FED635551D6F679000276E21 /* JHBlockCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +57,21 @@
 		FED635171D6F5CB400276E21 /* SignalPathUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SignalPathUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FED6351B1D6F5CB400276E21 /* SignalPathUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignalPathUITests.m; sourceTree = "<group>"; };
 		FED6351D1D6F5CB400276E21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FED6353F1D6F5FA800276E21 /* LSCollectionViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSCollectionViewHelper.h; sourceTree = "<group>"; };
+		FED635401D6F5FA800276E21 /* LSCollectionViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSCollectionViewHelper.m; sourceTree = "<group>"; };
+		FED635411D6F5FA800276E21 /* LSCollectionViewLayoutHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSCollectionViewLayoutHelper.h; sourceTree = "<group>"; };
+		FED635421D6F5FA800276E21 /* LSCollectionViewLayoutHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSCollectionViewLayoutHelper.m; sourceTree = "<group>"; };
+		FED635441D6F5FA800276E21 /* DraggableCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		FED635451D6F5FA800276E21 /* DraggableCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		FED635461D6F5FA800276E21 /* UICollectionView+Draggable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+Draggable.h"; sourceTree = "<group>"; };
+		FED635471D6F5FA800276E21 /* UICollectionView+Draggable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+Draggable.m"; sourceTree = "<group>"; };
+		FED635481D6F5FA800276E21 /* UICollectionViewDataSource_Draggable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICollectionViewDataSource_Draggable.h; sourceTree = "<group>"; };
+		FED635491D6F5FA800276E21 /* UICollectionViewLayout_Warpable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICollectionViewLayout_Warpable.h; sourceTree = "<group>"; };
+		FED635501D6F5FD100276E21 /* JHSignalPathViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHSignalPathViewController.h; sourceTree = "<group>"; };
+		FED635511D6F5FD100276E21 /* JHSignalPathViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHSignalPathViewController.m; sourceTree = "<group>"; };
+		FED635531D6F605D00276E21 /* JHConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JHConstant.h; sourceTree = "<group>"; };
+		FED635541D6F679000276E21 /* JHBlockCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHBlockCell.h; sourceTree = "<group>"; };
+		FED635551D6F679000276E21 /* JHBlockCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHBlockCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +122,7 @@
 		FED634F51D6F5CB300276E21 /* SignalPath */ = {
 			isa = PBXGroup;
 			children = (
+				FED6353B1D6F5FA800276E21 /* class */,
 				FED634F91D6F5CB400276E21 /* AppDelegate.h */,
 				FED634FA1D6F5CB400276E21 /* AppDelegate.m */,
 				FED634FC1D6F5CB400276E21 /* ViewController.h */,
@@ -138,6 +160,76 @@
 				FED6351D1D6F5CB400276E21 /* Info.plist */,
 			);
 			path = SignalPathUITests;
+			sourceTree = "<group>";
+		};
+		FED6353B1D6F5FA800276E21 /* class */ = {
+			isa = PBXGroup;
+			children = (
+				FED635531D6F605D00276E21 /* JHConstant.h */,
+				FED6353C1D6F5FA800276E21 /* View */,
+				FED6354A1D6F5FA800276E21 /* ViewController */,
+			);
+			path = class;
+			sourceTree = "<group>";
+		};
+		FED6353C1D6F5FA800276E21 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FED6353D1D6F5FA800276E21 /* DraggableCollectionView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FED6353D1D6F5FA800276E21 /* DraggableCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				FED6353E1D6F5FA800276E21 /* Helpers */,
+				FED635431D6F5FA800276E21 /* Layout */,
+				FED635461D6F5FA800276E21 /* UICollectionView+Draggable.h */,
+				FED635471D6F5FA800276E21 /* UICollectionView+Draggable.m */,
+				FED635481D6F5FA800276E21 /* UICollectionViewDataSource_Draggable.h */,
+				FED635491D6F5FA800276E21 /* UICollectionViewLayout_Warpable.h */,
+			);
+			path = DraggableCollectionView;
+			sourceTree = "<group>";
+		};
+		FED6353E1D6F5FA800276E21 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FED6353F1D6F5FA800276E21 /* LSCollectionViewHelper.h */,
+				FED635401D6F5FA800276E21 /* LSCollectionViewHelper.m */,
+				FED635411D6F5FA800276E21 /* LSCollectionViewLayoutHelper.h */,
+				FED635421D6F5FA800276E21 /* LSCollectionViewLayoutHelper.m */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		FED635431D6F5FA800276E21 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				FED635441D6F5FA800276E21 /* DraggableCollectionViewFlowLayout.h */,
+				FED635451D6F5FA800276E21 /* DraggableCollectionViewFlowLayout.m */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		FED6354A1D6F5FA800276E21 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FED6354B1D6F5FA800276E21 /* SignalPath */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		FED6354B1D6F5FA800276E21 /* SignalPath */ = {
+			isa = PBXGroup;
+			children = (
+				FED635501D6F5FD100276E21 /* JHSignalPathViewController.h */,
+				FED635511D6F5FD100276E21 /* JHSignalPathViewController.m */,
+				FED635541D6F679000276E21 /* JHBlockCell.h */,
+				FED635551D6F679000276E21 /* JHBlockCell.m */,
+			);
+			path = SignalPath;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,9 +362,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FED6354E1D6F5FA800276E21 /* DraggableCollectionViewFlowLayout.m in Sources */,
 				FED634FE1D6F5CB400276E21 /* ViewController.m in Sources */,
+				FED6354C1D6F5FA800276E21 /* LSCollectionViewHelper.m in Sources */,
+				FED635521D6F5FD100276E21 /* JHSignalPathViewController.m in Sources */,
 				FED634FB1D6F5CB400276E21 /* AppDelegate.m in Sources */,
+				FED635561D6F679000276E21 /* JHBlockCell.m in Sources */,
 				FED634F81D6F5CB400276E21 /* main.m in Sources */,
+				FED6354D1D6F5FA800276E21 /* LSCollectionViewLayoutHelper.m in Sources */,
+				FED6354F1D6F5FA800276E21 /* UICollectionView+Draggable.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
