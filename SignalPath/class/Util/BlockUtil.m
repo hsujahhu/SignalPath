@@ -40,19 +40,28 @@ NSString *const dataUrl = @"https://dl.positivegrid.com/ios_interview/SingleSign
                                                                   error:&error];
                 if (blockList) {
                     currentProgress.totalUnitCount = blockList.count;
-                    
+                    currentProgress.completedUnitCount = 0;
                     for (NSDictionary *dict in blockList) {
                         JHBlock *block = [JHBlock createObjectWithDict:dict];
                         [dataList addObject:block];
                     }
                     [BlockUtil downloadBlockImages:dataList
                                           progress:^(NSProgress *downloadProgress) {
-                                              [currentProgress addChild:downloadProgress withPendingUnitCount:1];
-                                          } block:^(BOOL success, NSError *error) {
+                                              if ([currentProgress respondsToSelector:@selector(addChild:withPendingUnitCount:)]) {
+                                                  [currentProgress addChild:downloadProgress withPendingUnitCount:1];
+                                              }
+                                          } block:^(BOOL finish,BOOL success,NSError *error) {
                                               dispatch_async(dispatch_get_main_queue(), ^{
-                                                  if (block) {
-                                                      block (dataList,error);
+                                                  if (finish) {
+                                                      if (block) {
+                                                          block (dataList,error);
+                                                      }
+                                                  }else{
+                                                      if (![currentProgress respondsToSelector:@selector(addChild:withPendingUnitCount:)] && success) {
+                                                          currentProgress.completedUnitCount ++;
+                                                      }
                                                   }
+                                                  
                                               });
                                           }];
                 }
@@ -67,6 +76,15 @@ NSString *const dataUrl = @"https://dl.positivegrid.com/ios_interview/SingleSign
         }];
 }
 
++ (void)clearBlockDataCacheWithBlock:(void(^)(void))block {
+    AFHTTPSessionManager *manager = [JHAPIClient shared];
+    [manager.session resetWithCompletionHandler:^{
+        if (block) {
+            block();
+        }
+    }];
+}
+
 + (void)downloadBlockImages:(NSArray<JHBlock *>*)blocks
                    progress:(void (^)(NSProgress * progress))progress
                       block:(fetchImageBlock)block {
@@ -76,19 +94,24 @@ NSString *const dataUrl = @"https://dl.positivegrid.com/ios_interview/SingleSign
     
     for (NSInteger i = 0; i < blocks.count; i++) {
         manager.responseSerializer = [AFImageResponseSerializer serializer];
-        JHBlock *block = blocks[i];
+        JHBlock *blockObj = blocks[i];
         
         dispatch_group_enter(group);
         
         NSURLSessionDataTask *task =
-        [manager GET:block.img parameters:nil
+        [manager GET:blockObj.img parameters:nil
             progress:^(NSProgress * _Nonnull downloadProgress) {
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                NSLog(@"Response :%@",responseObject);
-                block.image = responseObject;
+                blockObj.image = responseObject;
+                if (block) {
+                    block (NO,YES,nil);
+                }
                 dispatch_group_leave(group);
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 success = NO;
+                if (block) {
+                    block (NO,NO,error);
+                }
                 NSLog(@"Error: %@", error);
                 dispatch_group_leave(group);
             }];
@@ -100,7 +123,13 @@ NSString *const dataUrl = @"https://dl.positivegrid.com/ios_interview/SingleSign
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
         if (block) {
-            block (success,nil);
+            
+            NSError *e;
+            if (!success) {
+                e = [ErrorUtil errorWithCode:JHErrorCodeFetchingErorr
+                                     message:@"fetching data error"];
+            }
+            block (YES,success,e);
         }
     });
 }

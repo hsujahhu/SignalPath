@@ -9,10 +9,24 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger,JHBlockType) {
+    JHBlockTypeGATE  = 0,
+    JHBlockTypeCOMP     ,
+    JHBlockTypeBOOST    ,
+    JHBlockTypeDRIVE    ,
+    JHBlockTypeEQ       ,
+    JHBlockTypeMOD      ,
+    JHBlockTypeDELAY    ,
+    JHBlockTypeREVERB   ,
+    JHBlockTypeUNKNOWN
+};
+
 @interface JHBlock : NSObject
-@property (nonatomic,copy) NSString *name;
-@property (nonatomic,copy) NSString *type;
-@property (nonatomic,copy) NSString *img;
+@property (nonatomic,readonly) NSString *name;
+@property (nonatomic,readonly) NSString *typeName;
+@property (nonatomic,readonly) NSString *img;
 @property (nonatomic,strong) UIImage *image;
+@property (nonatomic,assign,readonly) JHBlockType type;
+
 + (JHBlock *)createObjectWithDict:(NSDictionary *)dict;
 @end

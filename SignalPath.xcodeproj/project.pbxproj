@@ -26,6 +26,7 @@
 		FE0943771D72C89300464F17 /* UIView+LayoutUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0943761D72C89200464F17 /* UIView+LayoutUtil.m */; };
 		FE09437C1D72E54900464F17 /* LXReorderableCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FE09437B1D72E54900464F17 /* LXReorderableCollectionViewFlowLayout.m */; };
 		FE0943801D733AA300464F17 /* JHCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FE09437F1D733AA300464F17 /* JHCollectionViewFlowLayout.m */; };
+		FE0943861D748F2300464F17 /* UIColor+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0943851D748F2300464F17 /* UIColor+Additions.m */; };
 		FED634F81D6F5CB400276E21 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FED634F71D6F5CB400276E21 /* main.m */; };
 		FED634FB1D6F5CB400276E21 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FED634FA1D6F5CB400276E21 /* AppDelegate.m */; };
 		FED635011D6F5CB400276E21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FED634FF1D6F5CB400276E21 /* Main.storyboard */; };
@@ -95,6 +96,8 @@
 		FE09437B1D72E54900464F17 /* LXReorderableCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXReorderableCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		FE09437E1D733AA300464F17 /* JHCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		FE09437F1D733AA300464F17 /* JHCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		FE0943841D748F2300464F17 /* UIColor+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Additions.h"; sourceTree = "<group>"; };
+		FE0943851D748F2300464F17 /* UIColor+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Additions.m"; sourceTree = "<group>"; };
 		FED634F31D6F5CB300276E21 /* SignalPath.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SignalPath.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FED634F71D6F5CB400276E21 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FED634F91D6F5CB400276E21 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -210,6 +213,8 @@
 				FE0943761D72C89200464F17 /* UIView+LayoutUtil.m */,
 				FE0943561D717DB900464F17 /* NSDictionary+SafetyAdditions.h */,
 				FE0943571D717DB900464F17 /* NSDictionary+SafetyAdditions.m */,
+				FE0943841D748F2300464F17 /* UIColor+Additions.h */,
+				FE0943851D748F2300464F17 /* UIColor+Additions.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -447,6 +452,7 @@
 				TargetAttributes = {
 					FED634F21D6F5CB300276E21 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 9DLS2VP9JV;
 					};
 					FED6350B1D6F5CB400276E21 = {
 						CreatedOnToolsVersion = 7.2;
@@ -636,6 +642,7 @@
 			files = (
 				FE09436A1D72BD8400464F17 /* UICollectionView+FDIndexPathHeightCache.m in Sources */,
 				FE0943801D733AA300464F17 /* JHCollectionViewFlowLayout.m in Sources */,
+				FE0943861D748F2300464F17 /* UIColor+Additions.m in Sources */,
 				FE0943711D72C2B300464F17 /* JHBlockCell.m in Sources */,
 				FE0943771D72C89300464F17 /* UIView+LayoutUtil.m in Sources */,
 				FE09435B1D71821E00464F17 /* ErrorUtil.m in Sources */,
@@ -793,7 +800,10 @@
 			baseConfigurationReference = 18A7BF95682D32C7B3D2A82B /* Pods-SignalPath.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SignalPath/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -801,6 +811,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hsujah.SignalPath;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -809,7 +820,10 @@
 			baseConfigurationReference = 452CEEB3E1B3ECA5982B266D /* Pods-SignalPath.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SignalPath/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -817,6 +831,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hsujah.SignalPath;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

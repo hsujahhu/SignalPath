@@ -70,6 +70,7 @@ static NSString * const kLXCollectionViewKeyPath = @"collectionView";
 @property (assign, nonatomic) CGPoint currentViewCenter;
 @property (assign, nonatomic) CGPoint panTranslationInCollectionView;
 @property (strong, nonatomic) CADisplayLink *displayLink;
+@property (assign, nonatomic) BOOL layoutAnimating;
 
 @property (assign, nonatomic, readonly) id<LXReorderableCollectionViewDataSource> dataSource;
 @property (assign, nonatomic, readonly) id<LXReorderableCollectionViewDelegateFlowLayout> delegate;
@@ -83,45 +84,18 @@ static NSString * const kLXCollectionViewKeyPath = @"collectionView";
     _scrollingTriggerEdgeInsets = UIEdgeInsetsMake(50.0f, 50.0f, 50.0f, 50.0f);
 }
 
-- (void)setMinimumPressDuration:(CFTimeInterval)minimumPressDuration {
-    _minimumPressDuration = minimumPressDuration;
-    _longPressGestureRecognizer.minimumPressDuration = minimumPressDuration;
-}
-
 - (void)setupCollectionView {
-    _longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self
-                                                                                action:@selector(handleLongPressGesture:)];
-    _longPressGestureRecognizer.delegate = self;
-    _longPressGestureRecognizer.minimumPressDuration = _minimumPressDuration;
-    // Links the default long press gesture recognizer to the custom long press gesture recognizer we are creating now
-    // by enforcing failure dependency so that they doesn't clash.
-    for (UIGestureRecognizer *gestureRecognizer in self.collectionView.gestureRecognizers) {
-        if ([gestureRecognizer isKindOfClass:[UILongPressGestureRecognizer class]]) {
-            [gestureRecognizer requireGestureRecognizerToFail:_longPressGestureRecognizer];
-        }
-    }
-    
-    [self.collectionView addGestureRecognizer:_longPressGestureRecognizer];
     
     _panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self
                                                                     action:@selector(handlePanGesture:)];
     _panGestureRecognizer.delegate = self;
     [self.collectionView addGestureRecognizer:_panGestureRecognizer];
-
+    
     // Useful in multiple scenarios: one common scenario being when the Notification Center drawer is pulled down
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleApplicationWillResignActive:) name: UIApplicationWillResignActiveNotification object:nil];
 }
 
 - (void)tearDownCollectionView {
-    // Tear down long press gesture
-    if (_longPressGestureRecognizer) {
-        UIView *view = _longPressGestureRecognizer.view;
-        if (view) {
-            [view removeGestureRecognizer:_longPressGestureRecognizer];
-        }
-        _longPressGestureRecognizer.delegate = nil;
-        _longPressGestureRecognizer = nil;
-    }
     
     // Tear down pan gesture
     if (_panGestureRecognizer) {
@@ -175,18 +149,24 @@ static NSString * const kLXCollectionViewKeyPath = @"collectionView";
 }
 
 - (void)invalidateLayoutIfNecessary {
+    if (self.layoutAnimating) {
+        return;
+    }else{
+        self.layoutAnimating = YES;
+    }
     NSIndexPath *newIndexPath = [self.collectionView indexPathForItemAtPoint:self.currentView.center];
     NSIndexPath *previousIndexPath = self.selectedItemIndexPath;
     
     if ((newIndexPath == nil) || [newIndexPath isEqual:previousIndexPath]) {
+        self.layoutAnimating = NO;
         return;
     }
     
     if ([self.dataSource respondsToSelector:@selector(collectionView:itemAtIndexPath:canMoveToIndexPath:)] &&
         ![self.dataSource collectionView:self.collectionView itemAtIndexPath:previousIndexPath canMoveToIndexPath:newIndexPath]) {
+        self.layoutAnimating = NO;
         return;
     }
-    
     self.selectedItemIndexPath = newIndexPath;
     
     if ([self.dataSource respondsToSelector:@selector(collectionView:itemAtIndexPath:willMoveToIndexPath:)]) {
@@ -205,6 +185,7 @@ static NSString * const kLXCollectionViewKeyPath = @"collectionView";
         if ([strongSelf.dataSource respondsToSelector:@selector(collectionView:itemAtIndexPath:didMoveToIndexPath:)]) {
             [strongSelf.dataSource collectionView:strongSelf.collectionView itemAtIndexPath:previousIndexPath didMoveToIndexPath:newIndexPath];
         }
+        strongSelf.layoutAnimating = NO;
     }];
 }
 
@@ -299,124 +280,20 @@ static NSString * const kLXCollectionViewKeyPath = @"collectionView";
     self.collectionView.contentOffset = LXS_CGPointAdd(contentOffset, translation);
 }
 
-
-- (void)handleLongPressGesture:(UILongPressGestureRecognizer *)gestureRecognizer {
-    switch(gestureRecognizer.state) {
-        case UIGestureRecognizerStateBegan: {
-            NSIndexPath *currentIndexPath = [self.collectionView indexPathForItemAtPoint:[gestureRecognizer locationInView:self.collectionView]];
-            
-            if ([self.dataSource respondsToSelector:@selector(collectionView:canMoveItemAtIndexPath:)] &&
-               ![self.dataSource collectionView:self.collectionView canMoveItemAtIndexPath:currentIndexPath]) {
-                return;
-            }
-            
-            self.selectedItemIndexPath = currentIndexPath;
-            
-            if ([self.delegate respondsToSelector:@selector(collectionView:layout:willBeginDraggingItemAtIndexPath:)]) {
-                [self.delegate collectionView:self.collectionView layout:self willBeginDraggingItemAtIndexPath:self.selectedItemIndexPath];
-            }
-            
-            UICollectionViewCell *collectionViewCell = [self.collectionView cellForItemAtIndexPath:self.selectedItemIndexPath];
-            
-            self.currentView = [[UIView alloc] initWithFrame:collectionViewCell.frame];
-            
-//            collectionViewCell.highlighted = YES;
-//            UIView *highlightedImageView = [collectionViewCell LX_snapshotView];
-//            highlightedImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-//            highlightedImageView.alpha = 1.0f;
-            
-//            collectionViewCell.highlighted = YES;
-            UIView *imageView = [collectionViewCell LX_snapshotView];
-            imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-            imageView.alpha = 1.0f;
-            
-            [self.currentView addSubview:imageView];
-//            [self.currentView addSubview:highlightedImageView];
-            [self.collectionView addSubview:self.currentView];
-            
-            self.currentViewCenter = self.currentView.center;
-            
-            __weak typeof(self) weakSelf = self;
-            [UIView
-             animateWithDuration:0.3
-             delay:0.0
-             options:UIViewAnimationOptionBeginFromCurrentState
-             animations:^{
-                 __strong typeof(self) strongSelf = weakSelf;
-                 if (strongSelf) {
-//                     strongSelf.currentView.transform = CGAffineTransformMakeScale(1.1f, 1.1f);
-//                     highlightedImageView.alpha = 0.0f;
-//                     imageView.alpha = 1.0f;
-                 }
-             }
-             completion:^(BOOL finished) {
-                 __strong typeof(self) strongSelf = weakSelf;
-                 if (strongSelf) {
-//                     [highlightedImageView removeFromSuperview];
-                     
-                     if ([strongSelf.delegate respondsToSelector:@selector(collectionView:layout:didBeginDraggingItemAtIndexPath:)]) {
-                         [strongSelf.delegate collectionView:strongSelf.collectionView layout:strongSelf didBeginDraggingItemAtIndexPath:strongSelf.selectedItemIndexPath];
-                     }
-                 }
-             }];
-            
-            [self invalidateLayout];
-        } break;
-        case UIGestureRecognizerStateCancelled:
-        case UIGestureRecognizerStateEnded: {
-            NSIndexPath *currentIndexPath = self.selectedItemIndexPath;
-            
-            if (currentIndexPath) {
-                if ([self.delegate respondsToSelector:@selector(collectionView:layout:willEndDraggingItemAtIndexPath:)]) {
-                    [self.delegate collectionView:self.collectionView layout:self willEndDraggingItemAtIndexPath:currentIndexPath];
-                }
-                
-                self.selectedItemIndexPath = nil;
-                self.currentViewCenter = CGPointZero;
-                
-                UICollectionViewLayoutAttributes *layoutAttributes = [self layoutAttributesForItemAtIndexPath:currentIndexPath];
-                
-                self.longPressGestureRecognizer.enabled = NO;
-                
-                __weak typeof(self) weakSelf = self;
-                [UIView
-                 animateWithDuration:0.3
-                 delay:0.0
-                 options:UIViewAnimationOptionBeginFromCurrentState
-                 animations:^{
-                     __strong typeof(self) strongSelf = weakSelf;
-                     if (strongSelf) {
-                         strongSelf.currentView.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
-                         strongSelf.currentView.center = layoutAttributes.center;
-                     }
-                 }
-                 completion:^(BOOL finished) {
-                     
-                     self.longPressGestureRecognizer.enabled = YES;
-                     
-                     __strong typeof(self) strongSelf = weakSelf;
-                     if (strongSelf) {
-                         [strongSelf.currentView removeFromSuperview];
-                         strongSelf.currentView = nil;
-                         [strongSelf invalidateLayout];
-                         
-                         if ([strongSelf.delegate respondsToSelector:@selector(collectionView:layout:didEndDraggingItemAtIndexPath:)]) {
-                             [strongSelf.delegate collectionView:strongSelf.collectionView layout:strongSelf didEndDraggingItemAtIndexPath:currentIndexPath];
-                         }
-                     }
-                 }];
-            }
-        } break;
-            
-        default: break;
-    }
-}
-
 - (void)handlePanGesture:(UIPanGestureRecognizer *)gestureRecognizer {
     switch (gestureRecognizer.state) {
-        case UIGestureRecognizerStateBegan:
+        case UIGestureRecognizerStateBegan: {
+            
+            if ([self.delegate respondsToSelector:@selector(collectionView:layout:didBeginDraggingItemAtIndexPath:)]) {
+                [self.delegate collectionView:self.collectionView
+                                       layout:self didBeginDraggingItemAtIndexPath:self.selectedItemIndexPath];
+            }
+            [self invalidateLayout];
+        }
         case UIGestureRecognizerStateChanged: {
             self.panTranslationInCollectionView = [gestureRecognizer translationInView:self.collectionView];
+            if (!self.selectedItemIndexPath) return;
+            
             CGPoint viewCenter = self.currentView.center = LXS_CGPointAdd(self.currentViewCenter, self.panTranslationInCollectionView);
             
             [self invalidateLayoutIfNecessary];
@@ -448,7 +325,46 @@ static NSString * const kLXCollectionViewKeyPath = @"collectionView";
         } break;
         case UIGestureRecognizerStateCancelled:
         case UIGestureRecognizerStateEnded: {
+            
+            NSIndexPath *currentIndexPath = self.selectedItemIndexPath;
+            self.currentViewCenter = CGPointZero;
             [self invalidatesScrollTimer];
+            
+            UICollectionViewLayoutAttributes *layoutAttributes = [self layoutAttributesForItemAtIndexPath:currentIndexPath];
+            
+            if ([self.delegate respondsToSelector:@selector(collectionView:layout:willEndDraggingItemAtIndexPath:)]) {
+                [self.delegate collectionView:self.collectionView layout:self willEndDraggingItemAtIndexPath:currentIndexPath];
+            }
+            
+            __weak typeof(self) weakSelf = self;
+            [UIView
+             animateWithDuration:0.3
+             delay:0.0
+             options:UIViewAnimationOptionBeginFromCurrentState|
+             UIViewAnimationOptionAllowUserInteraction |
+             UIViewAnimationOptionOverrideInheritedOptions|
+             UIViewAnimationOptionCurveEaseOut
+             animations:^{
+                 __strong typeof(self) strongSelf = weakSelf;
+                 if (strongSelf) {
+                     strongSelf.currentView.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+                     strongSelf.currentView.center = layoutAttributes.center;
+                 }
+             }
+             completion:^(BOOL finished) {
+                 
+                 __strong typeof(self) strongSelf = weakSelf;
+                 if (strongSelf) {
+                     [strongSelf.currentView removeFromSuperview];
+                     strongSelf.currentView = nil;
+                     self.selectedItemIndexPath = nil;
+                     [strongSelf invalidateLayout];
+                     
+                     if ([strongSelf.delegate respondsToSelector:@selector(collectionView:layout:didEndDraggingItemAtIndexPath:)]) {
+                         [strongSelf.delegate collectionView:strongSelf.collectionView layout:strongSelf didEndDraggingItemAtIndexPath:currentIndexPath];
+                     }
+                 }
+             }];
         } break;
         default: {
             // Do nothing...
@@ -493,20 +409,47 @@ static NSString * const kLXCollectionViewKeyPath = @"collectionView";
 #pragma mark - UIGestureRecognizerDelegate methods
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    
     if ([self.panGestureRecognizer isEqual:gestureRecognizer]) {
-        return (self.selectedItemIndexPath != nil);
+        if (self.selectedItemIndexPath) {
+            return NO;
+        }
+        [self.collectionView.panGestureRecognizer requireGestureRecognizerToFail:gestureRecognizer];
+        
+        NSIndexPath *currentIndexPath = [self.collectionView indexPathForItemAtPoint:[gestureRecognizer locationInView:self.collectionView]];
+        CGPoint point = [gestureRecognizer locationInView:self.collectionView];
+        
+        UICollectionViewCell *collectionViewCell = [self.collectionView cellForItemAtIndexPath:currentIndexPath];
+        CGPoint pointOfCell = [collectionViewCell convertPoint:point fromView:self.collectionView];
+        
+        if ([self.dataSource respondsToSelector:@selector(collectionView:canMoveItemAtIndexPath:)] &&
+            ![self.dataSource collectionView:self.collectionView canMoveItemAtIndexPath:currentIndexPath]) {
+            return NO;
+        }
+        
+        if ([self.dataSource respondsToSelector:@selector(collectionView:canMoveItemAtIndexPath:locationInCell:)] &&
+            ![self.dataSource collectionView:self.collectionView canMoveItemAtIndexPath:currentIndexPath locationInCell:pointOfCell]) {
+            return NO;
+        }
+        
+        self.selectedItemIndexPath = currentIndexPath;
+        
+        if ([self.delegate respondsToSelector:@selector(collectionView:layout:willBeginDraggingItemAtIndexPath:)]) {
+            [self.delegate collectionView:self.collectionView layout:self willBeginDraggingItemAtIndexPath:self.selectedItemIndexPath];
+        }
+        
+        self.currentView = [[UIView alloc] initWithFrame:collectionViewCell.frame];
+        UIView *imageView = [collectionViewCell LX_snapshotView];
+        imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        
+        [self.currentView addSubview:imageView];
+        [self.collectionView addSubview:self.currentView];
+        self.currentViewCenter = self.currentView.center;
     }
     return YES;
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    if ([self.longPressGestureRecognizer isEqual:gestureRecognizer]) {
-        return [self.panGestureRecognizer isEqual:otherGestureRecognizer];
-    }
-    
-    if ([self.panGestureRecognizer isEqual:gestureRecognizer]) {
-        return [self.longPressGestureRecognizer isEqual:otherGestureRecognizer];
-    }
     
     return NO;
 }
@@ -529,13 +472,6 @@ static NSString * const kLXCollectionViewKeyPath = @"collectionView";
 - (void)handleApplicationWillResignActive:(NSNotification *)notification {
     self.panGestureRecognizer.enabled = NO;
     self.panGestureRecognizer.enabled = YES;
-}
-
-#pragma mark - Depreciated methods
-
-#pragma mark Starting from 0.1.0
-- (void)setUpGestureRecognizersOnCollectionView {
-    // Do nothing...
 }
 
 @end

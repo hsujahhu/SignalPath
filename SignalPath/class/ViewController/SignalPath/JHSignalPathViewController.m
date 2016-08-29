@@ -27,10 +27,11 @@
 // Constants
 #import "JHConstants.h"
 
-@interface JHSignalPathViewController ()<LXReorderableCollectionViewDelegateFlowLayout,LXReorderableCollectionViewDataSource,UICollectionViewDelegate,JHSignalPathViewModelDelegate>
+@interface JHSignalPathViewController ()<LXReorderableCollectionViewDelegateFlowLayout,LXReorderableCollectionViewDataSource,UICollectionViewDelegate,JHSignalPathViewModelDelegate,UIAlertViewDelegate>
 @property (nonatomic,strong) UICollectionView *collectionView;
 @property (nonatomic,strong) UIButton *deleteButton;
 @property (nonatomic,strong) UIButton *refreshButton;
+@property (nonatomic,strong) UIButton *reloadButton;
 @property (nonatomic,strong) MBProgressHUD *hud;
 @property (nonatomic,strong) JHSignalPathViewModel *viewModel;
 @property (nonatomic,strong) JHCollectionViewFlowLayout *layout;
@@ -93,15 +94,23 @@
     [_refreshButton pinEdgeToSuperViewEdge:HXEdgeRight withInset:15];
     [_refreshButton pinEdgeToSuperViewEdge:HXEdgeBottom withInset:15];
     
+    _reloadButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_reloadButton setImage:[UIImage imageNamed:@"ic_cloud_download"] forState:UIControlStateNormal];
+    [_reloadButton addTarget:self
+                       action:@selector(reloadButtonListener:)
+             forControlEvents:UIControlEventTouchUpInside];
+    [_reloadButton setSize:CGSizeMake(44, 44)];
+    [self.view addSubview:_reloadButton];
+    [_reloadButton pinEdge:HXEdgeRight toEdge:HXEdgeLeft ofView:_refreshButton withOffset:12];
+    [_reloadButton pinEdgeToSuperViewEdge:HXEdgeBottom withInset:15];
+    
     _layout = [[JHCollectionViewFlowLayout alloc]init];
     _layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    _layout.itemSize = CGSizeMake(80, 100);
-    _layout.minimumInteritemSpacing = 12;
+    _layout.itemSize = CGSizeMake(80, 200);
+    _layout.minimumInteritemSpacing = 0;
     _layout.minimumLineSpacing = 8;
-    _layout.scrollingSpeed = 400.0f;
-    _layout.minimumPressDuration = 0.1f;
     
-    CGRect cvframe = CGRectMake(0, 0,kScreenWidth,100 * 1.5);
+    CGRect cvframe = CGRectMake(0, 0,kScreenWidth,200);
     _collectionView = [[UICollectionView alloc]initWithFrame:cvframe
                                         collectionViewLayout:_layout];
     _collectionView.center = CGPointMake(self.view.center.x, self.view.center.y);
@@ -137,6 +146,22 @@
         [_hud hideAnimated:YES];
         if (!error) {
             [self.collectionView reloadData];
+        }else {
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error"
+                                                           message:@"fetching Data error"
+                                                          delegate:self
+                                                 cancelButtonTitle:@"OK"
+                                                 otherButtonTitles:@"Retry", nil];
+            [alert show];
+        }
+    }];
+}
+
+- (void)reloadData {
+    
+    [_viewModel reloadSignalPathDataWithBlock:^(NSError *error) {
+        if (!error) {
+            [self fetchData];
         }
     }];
 }
@@ -144,17 +169,12 @@
 #pragma mark - Listener
 
 - (void)deleteButtonListener:(UIButton *)button {
-    if (_viewModel.selectedIndexPath) {
+    if (_viewModel.selectedBlock) {
         
         WS(weakSelf);
-        
-        [self.collectionView performBatchUpdates:^{
-            [weakSelf.viewModel deleteSelectedBlock];
-            [weakSelf.collectionView deleteItemsAtIndexPaths:@[_viewModel.selectedIndexPath]];
-        } completion:^(BOOL finished) {
-            [weakSelf.viewModel removeSelectedIndexPath];
-        }];
-        
+        NSIndexPath *indexPath = [_viewModel getSelectedBlockIndexPath];
+        [weakSelf.viewModel deleteSelectedBlock];
+        [weakSelf.collectionView deleteItemsAtIndexPaths:@[indexPath]];
     }
 }
 
@@ -162,15 +182,28 @@
     [self fetchData];
 }
 
-#pragma mark JHSignalPathViewModelDelegate
+- (void)reloadButtonListener:(UIButton *)button {
+    [self reloadData];
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        [self fetchData];
+    }
+}
+
+#pragma mark - JHSignalPathViewModelDelegate
 
 - (void)signalPathDataDownloadProgress:(CGFloat)progress {
+    
     NSInteger percentage = progress * 100;
-    _hud.label.text = [NSString stringWithFormat:@"Loading %li%%",percentage];
+    _hud.label.text = [NSString stringWithFormat:@"Loading %li%%",(long)percentage];
     [_hud setProgress:progress];
 }
 
-#pragma mark <UICollectionViewDataSource>
+#pragma mark - UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     
@@ -192,7 +225,14 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    JHBlockCell *cell = (JHBlockCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+    if (_viewModel.selectedBlock) {
+        JHBlockCell *prevSelectedCell = (JHBlockCell *)[self.collectionView cellForItemAtIndexPath:[_viewModel getSelectedBlockIndexPath]];
+        if (prevSelectedCell) {
+            [prevSelectedCell setSelected:NO animated:NO];
+        }
+    }
+    [_viewModel selectCell:cell atIndexPath:indexPath animated:YES];
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -213,16 +253,19 @@
 #pragma mark - LXReorderableCollectionViewDataSource methods
 
 - (void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath willMoveToIndexPath:(NSIndexPath *)toIndexPath {
-    JHBlock *block = [_viewModel.dataArray objectAtIndex:fromIndexPath.row];
     
-    [_viewModel.dataArray removeObject:block];
-    [_viewModel.dataArray insertObject:block atIndex:toIndexPath.item];
+    [_viewModel configureCellMoveFromIndexPath:fromIndexPath toIndexPath:toIndexPath];
 }
 
-- (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath {
-
-    return YES;
-
+- (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath locationInCell:(CGPoint)location {
+    
+    JHBlockCell *cell = (JHBlockCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+    CGRect imageViewFrame = [cell convertRect:cell.imageView.frame fromView:cell.selectedBlockView];
+    CGRect touchRect = CGRectMake(location.x, location.y, 1, 1);
+    
+    if (!imageViewFrame.size.width)return NO;
+    
+    return CGRectIntersectsRect(touchRect, imageViewFrame);
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath canMoveToIndexPath:(NSIndexPath *)toIndexPath {
@@ -233,29 +276,18 @@
 
 #pragma mark - LXReorderableCollectionViewDelegateFlowLayout methods
 
-- (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout willBeginDraggingItemAtIndexPath:(NSIndexPath *)indexPath {
-    JHBlockCell *cell = (JHBlockCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    if (_viewModel.selectedIndexPath) {
-        JHBlockCell *prevCell = (JHBlockCell *)[collectionView cellForItemAtIndexPath:_viewModel.selectedIndexPath];
-        if (prevCell) {
-            prevCell.backgroundColor = [UIColor clearColor];
-        }
-    }
-    [_viewModel selectCell:cell atIndexPath:indexPath];
-}
-
-- (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout didBeginDraggingItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"did begin drag");
-}
-
 - (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout willEndDraggingItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"will end drag");
     JHBlockCell *cell = (JHBlockCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    [_viewModel selectCell:cell atIndexPath:indexPath];
+    if (_viewModel.dataArray[indexPath.row] == _viewModel.selectedBlock) {
+        [cell setSelected:NO animated:NO];
+    }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout didEndDraggingItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"did end drag");
+    JHBlockCell *cell = (JHBlockCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    if (_viewModel.dataArray[indexPath.row] == _viewModel.selectedBlock) {
+        [_viewModel selectCell:cell atIndexPath:indexPath animated:NO];
+    }
 }
 
 @end

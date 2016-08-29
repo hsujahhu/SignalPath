@@ -30,31 +30,48 @@
 - (void)configureCell:(JHBlockCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     JHBlock *block = _dataArray[indexPath.row];
     [cell setBlock:block];
-    if (indexPath == _selectedIndexPath) {
-        cell.backgroundColor = [UIColor grayColor];
+    if (_dataArray[indexPath.row] == _selectedBlock) {
+        [cell setSelected:YES animated:NO];
+    }else{
+        [cell setSelected:NO animated:NO];
     }
 }
 
-- (void)selectCell:(JHBlockCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    cell.backgroundColor = [UIColor grayColor];
-    _selectedIndexPath = indexPath;
+- (void)configureCellMoveFromIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+    JHBlock *block = [_dataArray objectAtIndex:fromIndexPath.row];
+    
+    [_dataArray removeObject:block];
+    [_dataArray insertObject:block atIndex:toIndexPath.item];
+}
+
+- (void)selectCell:(JHBlockCell *)cell
+       atIndexPath:(NSIndexPath *)indexPath
+          animated:(BOOL)animated{
+    [cell setSelected:YES animated:animated];
+    _selectedBlock = _dataArray[indexPath.row];
 }
 
 - (void)deleteSelectedBlock {
-    [self.dataArray removeObjectAtIndex:_selectedIndexPath.row];
+    [self.dataArray removeObject:_selectedBlock];
+    _selectedBlock = nil;
 }
 
-- (void)removeSelectedIndexPath {
-    _selectedIndexPath = nil;
+- (NSIndexPath *)getSelectedBlockIndexPath {
+    if (!_selectedBlock) {
+        return nil;
+    }
+    NSInteger index = [_dataArray indexOfObject:_selectedBlock];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
+    return indexPath;
 }
 
 - (void)fetchSignalPathDataWithBlock:(void(^)(NSError *error))block {
     
     [BlockUtil fetchBlockDataWithBlock:^(NSArray<JHBlock *> *blocks, NSError *error) {
+        [self.progress removeObserver:self forKeyPath:@"fractionCompleted"];
+        _progress = nil;
         if (!error) {
-            self.dataArray = [blocks mutableCopy];
-            [self.progress removeObserver:self forKeyPath:@"fractionCompleted"];
-            _progress = nil;
+            _dataArray = [blocks mutableCopy];
         }
         if (block) {
             block (error);
@@ -65,6 +82,16 @@
             if (!self.progress) {
                 _progress = progress;
                 [self.progress addObserver:self forKeyPath:@"fractionCompleted" options:NSKeyValueObservingOptionNew context:NULL];
+            }
+        });
+    }];
+}
+
+- (void)reloadSignalPathDataWithBlock:(void(^)(NSError *error))block {
+    [BlockUtil clearBlockDataCacheWithBlock:^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (block) {
+                block(nil);
             }
         });
     }];

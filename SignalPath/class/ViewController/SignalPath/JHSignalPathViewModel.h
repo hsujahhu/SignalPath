@@ -16,16 +16,24 @@
 
 @interface JHSignalPathViewModel : NSObject
 @property (nonatomic,weak) id <JHSignalPathViewModelDelegate> delegate;
-@property (nonatomic,strong) NSMutableArray *dataArray;
+@property (nonatomic,readonly) NSMutableArray *dataArray;
 @property (nonatomic,readonly) NSProgress *progress;
 @property (nonatomic,readonly) NSString *cellReuseIdentifier;
-@property (nonatomic,readonly) NSIndexPath *selectedIndexPath;
+@property (nonatomic,readonly) JHBlock *selectedBlock;
 @property (nonatomic) Class registerClass;
+
 - (void)configureCell:(JHBlockCell *)cell
           atIndexPath:(NSIndexPath *)indexPath;
+
+- (void)configureCellMoveFromIndexPath:(NSIndexPath *)fromIndexPath
+                           toIndexPath:(NSIndexPath *)toIndexPath;
+
 - (void)selectCell:(JHBlockCell *)cell
-       atIndexPath:(NSIndexPath *)indexPath;
+       atIndexPath:(NSIndexPath *)indexPath
+          animated:(BOOL)animated;
+
 - (void)deleteSelectedBlock;
-- (void)removeSelectedIndexPath;
+- (NSIndexPath *)getSelectedBlockIndexPath;
 - (void)fetchSignalPathDataWithBlock:(void(^)(NSError *error))block;
+- (void)reloadSignalPathDataWithBlock:(void(^)(NSError *error))block;
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "JHCollectionViewFlowLayout.h"
+#import "UIColor+Additions.h"
 
 @interface JHDecorationView : UICollectionReusableView
 @property (nonatomic,strong) CAShapeLayer *line;
@@ -47,13 +48,14 @@
     if (self) {
         _line = [CAShapeLayer layer];
         UIBezierPath *path = [[UIBezierPath alloc]init];
-        NSLog(@"%@",NSStringFromCGRect(frame));
-        [path moveToPoint:CGPointMake(0,CGRectGetHeight(self.frame)/2 -2)];
+        [path moveToPoint:CGPointMake(0,CGRectGetHeight(self.frame)/2 - 9)];
         [path addLineToPoint:CGPointMake(CGRectGetWidth(self.frame),
-                                         CGRectGetHeight(self.frame)/2 - 2)];
+                                         CGRectGetHeight(self.frame)/2 - 9)];
+        
+        UIColor *color = [UIColor colorWithHexString:@"F4BF3D" alpha:1];
         _line.path = path.CGPath;
-        _line.strokeColor = [UIColor yellowColor].CGColor;
-        _line.lineWidth = 4;
+        _line.strokeColor = color.CGColor;
+        _line.lineWidth = 3;
         [self.layer addSublayer:_line];
     }
     return self;
@@ -62,9 +64,10 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     UIBezierPath *path = [[UIBezierPath alloc]init];
-    [path moveToPoint:CGPointMake(0,CGRectGetHeight(self.frame)/2 -2)];
+    [path moveToPoint:CGPointMake(0,CGRectGetHeight(self.frame)/2 - 9)];
     [path addLineToPoint:CGPointMake(CGRectGetWidth(self.frame),
-                                     CGRectGetHeight(self.frame)/2 - 2)];
+                                     CGRectGetHeight(self.frame)/2 - 9)];
+    _line.lineWidth = 3;
     _line.path = path.CGPath;
 }
 

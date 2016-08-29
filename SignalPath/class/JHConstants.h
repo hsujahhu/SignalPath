@@ -18,6 +18,6 @@
 
 typedef NS_ENUM(NSInteger,JHErrorCode) {
     
-    JHErrorCodeParsingErorr = 1001,
-    
+    JHErrorCodeParsingErorr  = 1001,
+    JHErrorCodeFetchingErorr = 1002,
 };

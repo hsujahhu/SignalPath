@@ -11,9 +11,10 @@
 #import "JHBlock.h"
 
 typedef void(^fetchResultsBlock)(NSArray<JHBlock *> *blocks,NSError *error);
-typedef void(^fetchImageBlock)(BOOL success,NSError *error);
+typedef void(^fetchImageBlock)(BOOL finish,BOOL success,NSError *error);
 
 @interface BlockUtil : NSObject
 + (void)fetchBlockDataWithBlock:(fetchResultsBlock)block
                        progress:(void (^)(NSProgress * progress))progress;
++ (void)clearBlockDataCacheWithBlock:(void(^)(void))block;
 @end

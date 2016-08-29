@@ -12,5 +12,7 @@
 @interface JHBlockCell : UICollectionViewCell
 @property (nonatomic,strong) UILabel *label;
 @property (nonatomic,strong) UIImageView *imageView;
+@property (nonatomic,strong) UIView *selectedBlockView;
 @property (nonatomic,strong) JHBlock *block;
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated;
 @end
