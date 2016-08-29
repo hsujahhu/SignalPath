@@ -7,20 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		613BD53C0FBB937969FE4536 /* libPods-SignalPathUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22A9367602E9C4B118E34879 /* libPods-SignalPathUITests.a */; };
+		7A32BDB5369AA0D298157EF3 /* libPods-SignalPath.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D9CD04EE3C48C382671DB8 /* libPods-SignalPath.a */; };
+		B0FC8B6CA043A8D3F9B0671A /* libPods-SignalPathTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA17E3B9992915165C3CCA58 /* libPods-SignalPathTests.a */; };
+		FE0943441D70B6D100464F17 /* BlockUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0943431D70B6D100464F17 /* BlockUtil.m */; };
+		FE0943481D70B7A200464F17 /* JHBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0943471D70B7A200464F17 /* JHBlock.m */; };
+		FE0943501D713ADE00464F17 /* https.cer in Resources */ = {isa = PBXBuildFile; fileRef = FE09434F1D713ADE00464F17 /* https.cer */; };
+		FE0943541D7167B200464F17 /* JHAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0943531D7167B200464F17 /* JHAPIClient.m */; };
+		FE0943581D717DB900464F17 /* NSDictionary+SafetyAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0943571D717DB900464F17 /* NSDictionary+SafetyAdditions.m */; };
+		FE09435B1D71821E00464F17 /* ErrorUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = FE09435A1D71821E00464F17 /* ErrorUtil.m */; };
+		FE0943601D71838500464F17 /* JHConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FE09435F1D71838500464F17 /* JHConstants.m */; };
+		FE09436A1D72BD8400464F17 /* UICollectionView+FDIndexPathHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0943631D72BD8400464F17 /* UICollectionView+FDIndexPathHeightCache.m */; };
+		FE09436B1D72BD8400464F17 /* UICollectionView+FDKeyedHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0943651D72BD8400464F17 /* UICollectionView+FDKeyedHeightCache.m */; };
+		FE09436C1D72BD8400464F17 /* UICollectionView+FDTemplateLayoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0943671D72BD8400464F17 /* UICollectionView+FDTemplateLayoutCell.m */; };
+		FE09436D1D72BD8400464F17 /* UICollectionView+FDTemplateLayoutCellDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0943691D72BD8400464F17 /* UICollectionView+FDTemplateLayoutCellDebug.m */; };
+		FE0943711D72C2B300464F17 /* JHBlockCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0943701D72C2B300464F17 /* JHBlockCell.m */; };
+		FE0943741D72C2C800464F17 /* JHSignalPathViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0943731D72C2C800464F17 /* JHSignalPathViewModel.m */; };
+		FE0943771D72C89300464F17 /* UIView+LayoutUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0943761D72C89200464F17 /* UIView+LayoutUtil.m */; };
+		FE09437C1D72E54900464F17 /* LXReorderableCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FE09437B1D72E54900464F17 /* LXReorderableCollectionViewFlowLayout.m */; };
+		FE0943801D733AA300464F17 /* JHCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FE09437F1D733AA300464F17 /* JHCollectionViewFlowLayout.m */; };
 		FED634F81D6F5CB400276E21 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FED634F71D6F5CB400276E21 /* main.m */; };
 		FED634FB1D6F5CB400276E21 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FED634FA1D6F5CB400276E21 /* AppDelegate.m */; };
-		FED634FE1D6F5CB400276E21 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FED634FD1D6F5CB400276E21 /* ViewController.m */; };
 		FED635011D6F5CB400276E21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FED634FF1D6F5CB400276E21 /* Main.storyboard */; };
 		FED635031D6F5CB400276E21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FED635021D6F5CB400276E21 /* Assets.xcassets */; };
 		FED635061D6F5CB400276E21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FED635041D6F5CB400276E21 /* LaunchScreen.storyboard */; };
 		FED635111D6F5CB400276E21 /* SignalPathTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FED635101D6F5CB400276E21 /* SignalPathTests.m */; };
 		FED6351C1D6F5CB400276E21 /* SignalPathUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FED6351B1D6F5CB400276E21 /* SignalPathUITests.m */; };
-		FED6354C1D6F5FA800276E21 /* LSCollectionViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FED635401D6F5FA800276E21 /* LSCollectionViewHelper.m */; };
-		FED6354D1D6F5FA800276E21 /* LSCollectionViewLayoutHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FED635421D6F5FA800276E21 /* LSCollectionViewLayoutHelper.m */; };
-		FED6354E1D6F5FA800276E21 /* DraggableCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FED635451D6F5FA800276E21 /* DraggableCollectionViewFlowLayout.m */; };
-		FED6354F1D6F5FA800276E21 /* UICollectionView+Draggable.m in Sources */ = {isa = PBXBuildFile; fileRef = FED635471D6F5FA800276E21 /* UICollectionView+Draggable.m */; };
 		FED635521D6F5FD100276E21 /* JHSignalPathViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FED635511D6F5FD100276E21 /* JHSignalPathViewController.m */; };
-		FED635561D6F679000276E21 /* JHBlockCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FED635551D6F679000276E21 /* JHBlockCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,12 +54,51 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18A7BF95682D32C7B3D2A82B /* Pods-SignalPath.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalPath.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SignalPath/Pods-SignalPath.debug.xcconfig"; sourceTree = "<group>"; };
+		22A9367602E9C4B118E34879 /* libPods-SignalPathUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SignalPathUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		452CEEB3E1B3ECA5982B266D /* Pods-SignalPath.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalPath.release.xcconfig"; path = "Pods/Target Support Files/Pods-SignalPath/Pods-SignalPath.release.xcconfig"; sourceTree = "<group>"; };
+		4BAC0675050247824C4362EC /* Pods-SignalPathUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalPathUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SignalPathUITests/Pods-SignalPathUITests.release.xcconfig"; sourceTree = "<group>"; };
+		6EC364E2263AA15BC96FFF84 /* Pods-SignalPathTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalPathTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SignalPathTests/Pods-SignalPathTests.debug.xcconfig"; sourceTree = "<group>"; };
+		926D25D2301F8DC65BED2C74 /* Pods-SignalPathUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalPathUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SignalPathUITests/Pods-SignalPathUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		BA17E3B9992915165C3CCA58 /* libPods-SignalPathTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SignalPathTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4A4EA611C4FD7D611B7B619 /* Pods-SignalPathTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalPathTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SignalPathTests/Pods-SignalPathTests.release.xcconfig"; sourceTree = "<group>"; };
+		D9D9CD04EE3C48C382671DB8 /* libPods-SignalPath.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SignalPath.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE0943421D70B6D100464F17 /* BlockUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockUtil.h; sourceTree = "<group>"; };
+		FE0943431D70B6D100464F17 /* BlockUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockUtil.m; sourceTree = "<group>"; };
+		FE0943461D70B7A200464F17 /* JHBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHBlock.h; sourceTree = "<group>"; };
+		FE0943471D70B7A200464F17 /* JHBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHBlock.m; sourceTree = "<group>"; };
+		FE0943491D70BCC400464F17 /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "Pods/../build/Debug-iphoneos/AFNetworking/libAFNetworking.a"; sourceTree = "<group>"; };
+		FE09434F1D713ADE00464F17 /* https.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = https.cer; sourceTree = "<group>"; };
+		FE0943521D7167B200464F17 /* JHAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHAPIClient.h; sourceTree = "<group>"; };
+		FE0943531D7167B200464F17 /* JHAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHAPIClient.m; sourceTree = "<group>"; };
+		FE0943561D717DB900464F17 /* NSDictionary+SafetyAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SafetyAdditions.h"; sourceTree = "<group>"; };
+		FE0943571D717DB900464F17 /* NSDictionary+SafetyAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SafetyAdditions.m"; sourceTree = "<group>"; };
+		FE0943591D71821E00464F17 /* ErrorUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorUtil.h; sourceTree = "<group>"; };
+		FE09435A1D71821E00464F17 /* ErrorUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorUtil.m; sourceTree = "<group>"; };
+		FE09435E1D71838500464F17 /* JHConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHConstants.h; sourceTree = "<group>"; };
+		FE09435F1D71838500464F17 /* JHConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHConstants.m; sourceTree = "<group>"; };
+		FE0943621D72BD8400464F17 /* UICollectionView+FDIndexPathHeightCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+FDIndexPathHeightCache.h"; sourceTree = "<group>"; };
+		FE0943631D72BD8400464F17 /* UICollectionView+FDIndexPathHeightCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+FDIndexPathHeightCache.m"; sourceTree = "<group>"; };
+		FE0943641D72BD8400464F17 /* UICollectionView+FDKeyedHeightCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+FDKeyedHeightCache.h"; sourceTree = "<group>"; };
+		FE0943651D72BD8400464F17 /* UICollectionView+FDKeyedHeightCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+FDKeyedHeightCache.m"; sourceTree = "<group>"; };
+		FE0943661D72BD8400464F17 /* UICollectionView+FDTemplateLayoutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+FDTemplateLayoutCell.h"; sourceTree = "<group>"; };
+		FE0943671D72BD8400464F17 /* UICollectionView+FDTemplateLayoutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+FDTemplateLayoutCell.m"; sourceTree = "<group>"; };
+		FE0943681D72BD8400464F17 /* UICollectionView+FDTemplateLayoutCellDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+FDTemplateLayoutCellDebug.h"; sourceTree = "<group>"; };
+		FE0943691D72BD8400464F17 /* UICollectionView+FDTemplateLayoutCellDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+FDTemplateLayoutCellDebug.m"; sourceTree = "<group>"; };
+		FE09436F1D72C2B300464F17 /* JHBlockCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHBlockCell.h; sourceTree = "<group>"; };
+		FE0943701D72C2B300464F17 /* JHBlockCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHBlockCell.m; sourceTree = "<group>"; };
+		FE0943721D72C2C800464F17 /* JHSignalPathViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHSignalPathViewModel.h; sourceTree = "<group>"; };
+		FE0943731D72C2C800464F17 /* JHSignalPathViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHSignalPathViewModel.m; sourceTree = "<group>"; };
+		FE0943751D72C89200464F17 /* UIView+LayoutUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LayoutUtil.h"; sourceTree = "<group>"; };
+		FE0943761D72C89200464F17 /* UIView+LayoutUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LayoutUtil.m"; sourceTree = "<group>"; };
+		FE09437A1D72E54900464F17 /* LXReorderableCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXReorderableCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		FE09437B1D72E54900464F17 /* LXReorderableCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXReorderableCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		FE09437E1D733AA300464F17 /* JHCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		FE09437F1D733AA300464F17 /* JHCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		FED634F31D6F5CB300276E21 /* SignalPath.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SignalPath.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FED634F71D6F5CB400276E21 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FED634F91D6F5CB400276E21 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FED634FA1D6F5CB400276E21 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		FED634FC1D6F5CB400276E21 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		FED634FD1D6F5CB400276E21 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		FED635001D6F5CB400276E21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FED635021D6F5CB400276E21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FED635051D6F5CB400276E21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -57,21 +109,8 @@
 		FED635171D6F5CB400276E21 /* SignalPathUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SignalPathUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FED6351B1D6F5CB400276E21 /* SignalPathUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignalPathUITests.m; sourceTree = "<group>"; };
 		FED6351D1D6F5CB400276E21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FED6353F1D6F5FA800276E21 /* LSCollectionViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSCollectionViewHelper.h; sourceTree = "<group>"; };
-		FED635401D6F5FA800276E21 /* LSCollectionViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSCollectionViewHelper.m; sourceTree = "<group>"; };
-		FED635411D6F5FA800276E21 /* LSCollectionViewLayoutHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSCollectionViewLayoutHelper.h; sourceTree = "<group>"; };
-		FED635421D6F5FA800276E21 /* LSCollectionViewLayoutHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSCollectionViewLayoutHelper.m; sourceTree = "<group>"; };
-		FED635441D6F5FA800276E21 /* DraggableCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableCollectionViewFlowLayout.h; sourceTree = "<group>"; };
-		FED635451D6F5FA800276E21 /* DraggableCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableCollectionViewFlowLayout.m; sourceTree = "<group>"; };
-		FED635461D6F5FA800276E21 /* UICollectionView+Draggable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+Draggable.h"; sourceTree = "<group>"; };
-		FED635471D6F5FA800276E21 /* UICollectionView+Draggable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+Draggable.m"; sourceTree = "<group>"; };
-		FED635481D6F5FA800276E21 /* UICollectionViewDataSource_Draggable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICollectionViewDataSource_Draggable.h; sourceTree = "<group>"; };
-		FED635491D6F5FA800276E21 /* UICollectionViewLayout_Warpable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICollectionViewLayout_Warpable.h; sourceTree = "<group>"; };
 		FED635501D6F5FD100276E21 /* JHSignalPathViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHSignalPathViewController.h; sourceTree = "<group>"; };
 		FED635511D6F5FD100276E21 /* JHSignalPathViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHSignalPathViewController.m; sourceTree = "<group>"; };
-		FED635531D6F605D00276E21 /* JHConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JHConstant.h; sourceTree = "<group>"; };
-		FED635541D6F679000276E21 /* JHBlockCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHBlockCell.h; sourceTree = "<group>"; };
-		FED635551D6F679000276E21 /* JHBlockCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHBlockCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A32BDB5369AA0D298157EF3 /* libPods-SignalPath.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0FC8B6CA043A8D3F9B0671A /* libPods-SignalPathTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,12 +134,137 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				613BD53C0FBB937969FE4536 /* libPods-SignalPathUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AFAEE21BE2CE75C30F2B96ED /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				18A7BF95682D32C7B3D2A82B /* Pods-SignalPath.debug.xcconfig */,
+				452CEEB3E1B3ECA5982B266D /* Pods-SignalPath.release.xcconfig */,
+				6EC364E2263AA15BC96FFF84 /* Pods-SignalPathTests.debug.xcconfig */,
+				C4A4EA611C4FD7D611B7B619 /* Pods-SignalPathTests.release.xcconfig */,
+				926D25D2301F8DC65BED2C74 /* Pods-SignalPathUITests.debug.xcconfig */,
+				4BAC0675050247824C4362EC /* Pods-SignalPathUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BA8BB38A5F56663EE34433C5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FE0943491D70BCC400464F17 /* libAFNetworking.a */,
+				D9D9CD04EE3C48C382671DB8 /* libPods-SignalPath.a */,
+				BA17E3B9992915165C3CCA58 /* libPods-SignalPathTests.a */,
+				22A9367602E9C4B118E34879 /* libPods-SignalPathUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FE0943411D70B67900464F17 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				FE0943421D70B6D100464F17 /* BlockUtil.h */,
+				FE0943431D70B6D100464F17 /* BlockUtil.m */,
+				FE0943591D71821E00464F17 /* ErrorUtil.h */,
+				FE09435A1D71821E00464F17 /* ErrorUtil.m */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		FE0943451D70B74600464F17 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FE0943461D70B7A200464F17 /* JHBlock.h */,
+				FE0943471D70B7A200464F17 /* JHBlock.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FE09434E1D713ADE00464F17 /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				FE09434F1D713ADE00464F17 /* https.cer */,
+			);
+			path = resource;
+			sourceTree = "<group>";
+		};
+		FE0943511D71677000464F17 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				FE0943521D7167B200464F17 /* JHAPIClient.h */,
+				FE0943531D7167B200464F17 /* JHAPIClient.m */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		FE0943551D717DB900464F17 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				FE0943611D72BD8400464F17 /* JHTemplateLayoutCell */,
+				FE0943751D72C89200464F17 /* UIView+LayoutUtil.h */,
+				FE0943761D72C89200464F17 /* UIView+LayoutUtil.m */,
+				FE0943561D717DB900464F17 /* NSDictionary+SafetyAdditions.h */,
+				FE0943571D717DB900464F17 /* NSDictionary+SafetyAdditions.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		FE0943611D72BD8400464F17 /* JHTemplateLayoutCell */ = {
+			isa = PBXGroup;
+			children = (
+				FE0943621D72BD8400464F17 /* UICollectionView+FDIndexPathHeightCache.h */,
+				FE0943631D72BD8400464F17 /* UICollectionView+FDIndexPathHeightCache.m */,
+				FE0943641D72BD8400464F17 /* UICollectionView+FDKeyedHeightCache.h */,
+				FE0943651D72BD8400464F17 /* UICollectionView+FDKeyedHeightCache.m */,
+				FE0943661D72BD8400464F17 /* UICollectionView+FDTemplateLayoutCell.h */,
+				FE0943671D72BD8400464F17 /* UICollectionView+FDTemplateLayoutCell.m */,
+				FE0943681D72BD8400464F17 /* UICollectionView+FDTemplateLayoutCellDebug.h */,
+				FE0943691D72BD8400464F17 /* UICollectionView+FDTemplateLayoutCellDebug.m */,
+			);
+			path = JHTemplateLayoutCell;
+			sourceTree = "<group>";
+		};
+		FE09436E1D72C2B300464F17 /* BlockCell */ = {
+			isa = PBXGroup;
+			children = (
+				FE09436F1D72C2B300464F17 /* JHBlockCell.h */,
+				FE0943701D72C2B300464F17 /* JHBlockCell.m */,
+			);
+			path = BlockCell;
+			sourceTree = "<group>";
+		};
+		FE0943781D72E54900464F17 /* FlowLayout */ = {
+			isa = PBXGroup;
+			children = (
+				FE09437D1D733A8400464F17 /* JHCollectionViewFlowLayout */,
+				FE0943791D72E54900464F17 /* LXReorderableCollectionViewFlowLayout */,
+			);
+			path = FlowLayout;
+			sourceTree = "<group>";
+		};
+		FE0943791D72E54900464F17 /* LXReorderableCollectionViewFlowLayout */ = {
+			isa = PBXGroup;
+			children = (
+				FE09437A1D72E54900464F17 /* LXReorderableCollectionViewFlowLayout.h */,
+				FE09437B1D72E54900464F17 /* LXReorderableCollectionViewFlowLayout.m */,
+			);
+			path = LXReorderableCollectionViewFlowLayout;
+			sourceTree = "<group>";
+		};
+		FE09437D1D733A8400464F17 /* JHCollectionViewFlowLayout */ = {
+			isa = PBXGroup;
+			children = (
+				FE09437E1D733AA300464F17 /* JHCollectionViewFlowLayout.h */,
+				FE09437F1D733AA300464F17 /* JHCollectionViewFlowLayout.m */,
+			);
+			path = JHCollectionViewFlowLayout;
+			sourceTree = "<group>";
+		};
 		FED634EA1D6F5CB300276E21 = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +272,8 @@
 				FED6350F1D6F5CB400276E21 /* SignalPathTests */,
 				FED6351A1D6F5CB400276E21 /* SignalPathUITests */,
 				FED634F41D6F5CB300276E21 /* Products */,
+				AFAEE21BE2CE75C30F2B96ED /* Pods */,
+				BA8BB38A5F56663EE34433C5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,11 +290,10 @@
 		FED634F51D6F5CB300276E21 /* SignalPath */ = {
 			isa = PBXGroup;
 			children = (
+				FE09434E1D713ADE00464F17 /* resource */,
 				FED6353B1D6F5FA800276E21 /* class */,
 				FED634F91D6F5CB400276E21 /* AppDelegate.h */,
 				FED634FA1D6F5CB400276E21 /* AppDelegate.m */,
-				FED634FC1D6F5CB400276E21 /* ViewController.h */,
-				FED634FD1D6F5CB400276E21 /* ViewController.m */,
 				FED634FF1D6F5CB400276E21 /* Main.storyboard */,
 				FED635021D6F5CB400276E21 /* Assets.xcassets */,
 				FED635041D6F5CB400276E21 /* LaunchScreen.storyboard */,
@@ -165,7 +332,13 @@
 		FED6353B1D6F5FA800276E21 /* class */ = {
 			isa = PBXGroup;
 			children = (
-				FED635531D6F605D00276E21 /* JHConstant.h */,
+				FE09435E1D71838500464F17 /* JHConstants.h */,
+				FE09435F1D71838500464F17 /* JHConstants.m */,
+				FE0943781D72E54900464F17 /* FlowLayout */,
+				FE0943551D717DB900464F17 /* Category */,
+				FE0943511D71677000464F17 /* Networking */,
+				FE0943451D70B74600464F17 /* Model */,
+				FE0943411D70B67900464F17 /* Util */,
 				FED6353C1D6F5FA800276E21 /* View */,
 				FED6354A1D6F5FA800276E21 /* ViewController */,
 			);
@@ -175,42 +348,9 @@
 		FED6353C1D6F5FA800276E21 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FED6353D1D6F5FA800276E21 /* DraggableCollectionView */,
+				FE09436E1D72C2B300464F17 /* BlockCell */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		FED6353D1D6F5FA800276E21 /* DraggableCollectionView */ = {
-			isa = PBXGroup;
-			children = (
-				FED6353E1D6F5FA800276E21 /* Helpers */,
-				FED635431D6F5FA800276E21 /* Layout */,
-				FED635461D6F5FA800276E21 /* UICollectionView+Draggable.h */,
-				FED635471D6F5FA800276E21 /* UICollectionView+Draggable.m */,
-				FED635481D6F5FA800276E21 /* UICollectionViewDataSource_Draggable.h */,
-				FED635491D6F5FA800276E21 /* UICollectionViewLayout_Warpable.h */,
-			);
-			path = DraggableCollectionView;
-			sourceTree = "<group>";
-		};
-		FED6353E1D6F5FA800276E21 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				FED6353F1D6F5FA800276E21 /* LSCollectionViewHelper.h */,
-				FED635401D6F5FA800276E21 /* LSCollectionViewHelper.m */,
-				FED635411D6F5FA800276E21 /* LSCollectionViewLayoutHelper.h */,
-				FED635421D6F5FA800276E21 /* LSCollectionViewLayoutHelper.m */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
-		FED635431D6F5FA800276E21 /* Layout */ = {
-			isa = PBXGroup;
-			children = (
-				FED635441D6F5FA800276E21 /* DraggableCollectionViewFlowLayout.h */,
-				FED635451D6F5FA800276E21 /* DraggableCollectionViewFlowLayout.m */,
-			);
-			path = Layout;
 			sourceTree = "<group>";
 		};
 		FED6354A1D6F5FA800276E21 /* ViewController */ = {
@@ -226,8 +366,8 @@
 			children = (
 				FED635501D6F5FD100276E21 /* JHSignalPathViewController.h */,
 				FED635511D6F5FD100276E21 /* JHSignalPathViewController.m */,
-				FED635541D6F679000276E21 /* JHBlockCell.h */,
-				FED635551D6F679000276E21 /* JHBlockCell.m */,
+				FE0943721D72C2C800464F17 /* JHSignalPathViewModel.h */,
+				FE0943731D72C2C800464F17 /* JHSignalPathViewModel.m */,
 			);
 			path = SignalPath;
 			sourceTree = "<group>";
@@ -239,9 +379,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FED635201D6F5CB400276E21 /* Build configuration list for PBXNativeTarget "SignalPath" */;
 			buildPhases = (
+				36ECC999366E592FAC1C005E /* [CP] Check Pods Manifest.lock */,
 				FED634EF1D6F5CB300276E21 /* Sources */,
 				FED634F01D6F5CB300276E21 /* Frameworks */,
 				FED634F11D6F5CB300276E21 /* Resources */,
+				C9E07963D0953E74E4CFB970 /* [CP] Embed Pods Frameworks */,
+				5842D6891FBBA9632B82AE2F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -256,9 +399,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FED635231D6F5CB400276E21 /* Build configuration list for PBXNativeTarget "SignalPathTests" */;
 			buildPhases = (
+				79B8B68ED4CE002DF074FB70 /* [CP] Check Pods Manifest.lock */,
 				FED635081D6F5CB400276E21 /* Sources */,
 				FED635091D6F5CB400276E21 /* Frameworks */,
 				FED6350A1D6F5CB400276E21 /* Resources */,
+				60535C4B522FAB22BCD01023 /* [CP] Embed Pods Frameworks */,
+				7FF0363FF26EDE79C7E38FF0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -274,9 +420,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FED635261D6F5CB400276E21 /* Build configuration list for PBXNativeTarget "SignalPathUITests" */;
 			buildPhases = (
+				FA385F9F7A2E0C352854811D /* [CP] Check Pods Manifest.lock */,
 				FED635131D6F5CB400276E21 /* Sources */,
 				FED635141D6F5CB400276E21 /* Frameworks */,
 				FED635151D6F5CB400276E21 /* Resources */,
+				E96CD372B678263C65AE512E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -335,6 +483,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE0943501D713ADE00464F17 /* https.cer in Resources */,
 				FED635061D6F5CB400276E21 /* LaunchScreen.storyboard in Resources */,
 				FED635031D6F5CB400276E21 /* Assets.xcassets in Resources */,
 				FED635011D6F5CB400276E21 /* Main.storyboard in Resources */,
@@ -357,20 +506,152 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		36ECC999366E592FAC1C005E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5842D6891FBBA9632B82AE2F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SignalPath/Pods-SignalPath-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		60535C4B522FAB22BCD01023 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SignalPathTests/Pods-SignalPathTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		79B8B68ED4CE002DF074FB70 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7FF0363FF26EDE79C7E38FF0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SignalPathTests/Pods-SignalPathTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C9E07963D0953E74E4CFB970 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SignalPath/Pods-SignalPath-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E96CD372B678263C65AE512E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SignalPathUITests/Pods-SignalPathUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA385F9F7A2E0C352854811D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FED634EF1D6F5CB300276E21 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FED6354E1D6F5FA800276E21 /* DraggableCollectionViewFlowLayout.m in Sources */,
-				FED634FE1D6F5CB400276E21 /* ViewController.m in Sources */,
-				FED6354C1D6F5FA800276E21 /* LSCollectionViewHelper.m in Sources */,
+				FE09436A1D72BD8400464F17 /* UICollectionView+FDIndexPathHeightCache.m in Sources */,
+				FE0943801D733AA300464F17 /* JHCollectionViewFlowLayout.m in Sources */,
+				FE0943711D72C2B300464F17 /* JHBlockCell.m in Sources */,
+				FE0943771D72C89300464F17 /* UIView+LayoutUtil.m in Sources */,
+				FE09435B1D71821E00464F17 /* ErrorUtil.m in Sources */,
+				FE0943541D7167B200464F17 /* JHAPIClient.m in Sources */,
+				FE0943741D72C2C800464F17 /* JHSignalPathViewModel.m in Sources */,
 				FED635521D6F5FD100276E21 /* JHSignalPathViewController.m in Sources */,
 				FED634FB1D6F5CB400276E21 /* AppDelegate.m in Sources */,
-				FED635561D6F679000276E21 /* JHBlockCell.m in Sources */,
+				FE09436C1D72BD8400464F17 /* UICollectionView+FDTemplateLayoutCell.m in Sources */,
 				FED634F81D6F5CB400276E21 /* main.m in Sources */,
-				FED6354D1D6F5FA800276E21 /* LSCollectionViewLayoutHelper.m in Sources */,
-				FED6354F1D6F5FA800276E21 /* UICollectionView+Draggable.m in Sources */,
+				FE0943481D70B7A200464F17 /* JHBlock.m in Sources */,
+				FE0943601D71838500464F17 /* JHConstants.m in Sources */,
+				FE0943581D717DB900464F17 /* NSDictionary+SafetyAdditions.m in Sources */,
+				FE09436B1D72BD8400464F17 /* UICollectionView+FDKeyedHeightCache.m in Sources */,
+				FE09436D1D72BD8400464F17 /* UICollectionView+FDTemplateLayoutCellDebug.m in Sources */,
+				FE09437C1D72E54900464F17 /* LXReorderableCollectionViewFlowLayout.m in Sources */,
+				FE0943441D70B6D100464F17 /* BlockUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,10 +790,15 @@
 		};
 		FED635211D6F5CB400276E21 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 18A7BF95682D32C7B3D2A82B /* Pods-SignalPath.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SignalPath/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/AFNetworking",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hsujah.SignalPath;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -520,10 +806,15 @@
 		};
 		FED635221D6F5CB400276E21 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 452CEEB3E1B3ECA5982B266D /* Pods-SignalPath.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SignalPath/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/AFNetworking",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hsujah.SignalPath;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -531,6 +822,7 @@
 		};
 		FED635241D6F5CB400276E21 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6EC364E2263AA15BC96FFF84 /* Pods-SignalPathTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = SignalPathTests/Info.plist;
@@ -543,6 +835,7 @@
 		};
 		FED635251D6F5CB400276E21 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C4A4EA611C4FD7D611B7B619 /* Pods-SignalPathTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = SignalPathTests/Info.plist;
@@ -555,6 +848,7 @@
 		};
 		FED635271D6F5CB400276E21 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 926D25D2301F8DC65BED2C74 /* Pods-SignalPathUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = SignalPathUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -567,6 +861,7 @@
 		};
 		FED635281D6F5CB400276E21 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4BAC0675050247824C4362EC /* Pods-SignalPathUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = SignalPathUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -596,6 +891,7 @@
 				FED635221D6F5CB400276E21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FED635231D6F5CB400276E21 /* Build configuration list for PBXNativeTarget "SignalPathTests" */ = {
 			isa = XCConfigurationList;
@@ -604,6 +900,7 @@
 				FED635251D6F5CB400276E21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FED635261D6F5CB400276E21 /* Build configuration list for PBXNativeTarget "SignalPathUITests" */ = {
 			isa = XCConfigurationList;
@@ -612,6 +909,7 @@
 				FED635281D6F5CB400276E21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
